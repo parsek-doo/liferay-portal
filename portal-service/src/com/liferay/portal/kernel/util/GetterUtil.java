@@ -453,6 +453,14 @@ public class GetterUtil {
 		return booleanValues;
 	}
 
+	public static byte[] getBytes(String value) {
+		if (value != null) {
+			return value.getBytes();
+		} else {
+			return DEFAULT_BYTE_VALUES;
+		}
+	}
+
 	public static Date getDate(Object value, DateFormat dateFormat) {
 		return getDate(value, dateFormat, new Date());
 	}

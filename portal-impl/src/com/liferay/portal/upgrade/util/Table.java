@@ -355,6 +355,9 @@ public class Table {
 		else if (t == Types.BIT) {
 			value = GetterUtil.getBoolean(rs.getBoolean(name));
 		}
+		else if (t == Types.BLOB) {
+			value = rs.getBytes(name);
+		}
 		else if (t == Types.BOOLEAN) {
 			value = GetterUtil.getBoolean(rs.getBoolean(name));
 		}
@@ -547,6 +550,11 @@ public class Table {
 
 		if (t == Types.BIGINT) {
 			ps.setLong(paramIndex, GetterUtil.getLong(value));
+		}
+		else if (t == Types.BLOB) {
+			if (value != null) {
+				ps.setBytes(paramIndex, GetterUtil.getBytes(value));
+			}
 		}
 		else if (t == Types.BOOLEAN) {
 			ps.setBoolean(paramIndex, GetterUtil.getBoolean(value));
